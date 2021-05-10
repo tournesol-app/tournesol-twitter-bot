@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Tournesol Twitter Bot authentication file (must not be shared!)
+tournesolbot/data/authentication.py
