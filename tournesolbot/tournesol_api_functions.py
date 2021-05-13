@@ -38,11 +38,11 @@ def get_good_video(from_top,days_ago,language='en'):
     df = df[df['n_experts']>n_contributor]
 
     df = remove_already_tweeted_videos_and_channels(df, language)
-    print('\nList of remaining videos :')
-    print(df[['video_id','name','uploader','tournesol_score','n_experts']])
 
     # Remove video with a reliability lower than average
     df = df[df['reliability']>1.1]
+    print('\nList of remaining videos :')
+    print(df[['video_id','name','uploader','tournesol_score','n_experts','reliability']])
 
     # Chose a video randomly (weighted by Tournesol score) in the remaining list
     df_rand = df.sample(weights=df['score'])
