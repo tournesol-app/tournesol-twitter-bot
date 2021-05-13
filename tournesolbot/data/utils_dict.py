@@ -84,9 +84,18 @@ YT_2_TWITTER = {
     "CosmicSkeptic":"@CosmicSkeptic",
     "Anthony Magnabosco":"@magnabosco",
     "MinuteEarth":"@MinuteEarth",
+    "minutephysics":"@minutephysics",
     "Above The Noise":"@ATN_PBS",
     "Two Minute Papers":"@twominutepapers",
+    "Primer":"@primerlearning",
     "Earthling Ed":"Earthling Ed",
+    "Partnership on AI":"@PartnershipAI",
+    "Sabine Hossenfelder":"@skdh",
+    "stanfordonline":"@StanfordOnline",
+    "Lex Fridman":"@lexfridman",
+    "Lex Clips":"@lexfridman",
+    "Zach Star":"@ImZachStar",
+
 
     # French channels
     "Science4All":"@le_science4all",
@@ -113,6 +122,7 @@ YT_2_TWITTER = {
     "DirtyBiology":"@dirtybiology",
     "Philoxime":"@maxlambr",
     "Scilabus":"@Scilabus",
+    "Scilabus plus":"@Scilabus",
     "Homo Fabulus":"@HomoFabulus",
     "AstronoGeek":"@AstronoGeek",
     "Aude WTFake":"@WTFake_",
@@ -125,6 +135,9 @@ YT_2_TWITTER = {
     "String Theory FR":"@StringTheoryFR",
     "Max Bird":"@MaxBirdOfficiel",
     "la chaîne humaine":"@adrien_fabre",
-    "Le Vortex":"Le Vortex",
+    "Le Vortex":"'Le Vortex'",
     "Pour Info":"Pour Info",
+    "DIMENSION DÉBAT":"@DIMENSION_YT",
+    "Tzitzimitl - Esprit Critique":"@Tzitzimitl",
+    "La Psy Qui Parle":"@LaPsyQuiParle",
 }
