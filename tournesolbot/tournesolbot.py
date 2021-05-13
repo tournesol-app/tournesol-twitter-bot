@@ -9,6 +9,11 @@ from data.utils_dict import ACCEPTED_LANGUAGE,YT_2_TWITTER, CRITERIA_DICT
 from data.utils_dict import already_answered_filepath, daily_tweet_text, video_details_tweet_text, not_found_video_tweet_text
 
 
+# Parameters
+FROM_TOP = 50
+LAST_N_DAYS = 120
+
+
 def get_top_percentage(criteria_row):
 # Get the top percentage categorie (Top 1,2,5,10,20,50%) from the quantile value (in the row)
 
@@ -56,9 +61,7 @@ def daily_tweet(api,language='en'):
 # Prepare and tweet the daily video recommandation
 
     # Get the video id for today's tweet
-    from_top = 40
-    last_n_days = 360 #TODO: reduce when more videos on Tournesol
-    video_id = get_good_video(from_top,last_n_days,language)
+    video_id = get_good_video(FROM_TOP,LAST_N_DAYS,language)
 
     video_dict = get_video_info(video_id)
 
@@ -279,7 +282,7 @@ if __name__ == '__main__':
             write_tweet(api,arg,language,'')
 
         if opt == '-m':
-            get_missing_channel_list(50,360,language)
+            get_missing_channel_list(FROM_TOP,LAST_N_DAYS,language)
 
         if opt == '-r':
             respond_to_mention(api,language)
