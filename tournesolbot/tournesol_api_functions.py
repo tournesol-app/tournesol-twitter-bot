@@ -13,7 +13,13 @@ def remove_already_tweeted_videos_and_channels(df, language='en'):
 
     # Get already tweeted channels in the last n days
     n_days = 7
-    last_days_channels = df.loc[df['video_id'].isin(already_tweeted),'uploader'].tolist()[-n_days:]
+    last_days_channels = []
+    for video_id in already_tweeted[-n_days:]:
+        if video_id in df['video_id'].values:
+            channel = df.loc[df['video_id']==video_id,'uploader'].values[0]
+        else: # Use the API if the video in not in the top anymore
+            channel = get_video_info(video_id)['uploader']
+        last_days_channels.append(channel)
 
     # Remove already tweeted video
     df = df[~df['video_id'].isin(already_tweeted)]
