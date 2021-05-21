@@ -10,7 +10,7 @@ from data.utils_dict import already_answered_filepath, daily_tweet_text, video_d
 
 
 # Parameters
-FROM_TOP = 50
+FROM_TOP = 70
 LAST_N_DAYS = 120
 
 
