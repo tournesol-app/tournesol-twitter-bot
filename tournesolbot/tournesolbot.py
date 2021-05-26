@@ -13,7 +13,6 @@ from data.utils_dict import already_answered_filepath, daily_tweet_text, video_d
 FROM_TOP = 70
 LAST_N_DAYS = 120
 
-
 def get_top_percentage(criteria_row):
 # Get the top percentage categorie (Top 1,2,5,10,20,50%) from the quantile value (in the row)
 

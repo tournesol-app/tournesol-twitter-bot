@@ -29,7 +29,6 @@ def remove_already_tweeted_videos_and_channels(df, language='en'):
 
     return df
 
-
 def get_good_video(from_top,days_ago,language='en'):
 # Get a good video for the daily tweet
 
@@ -84,6 +83,9 @@ def get_missing_channel_list(from_top,days_ago,language='en'):
 
     # Remove channel which are already in the dictionnary
     df = df[~df['uploader'].isin(YT_2_TWITTER.keys())]
+
+    df['n_experts'] = df['n_public_experts'] + df['n_private_experts']
+    df = df[df['n_experts']>1]
 
     # Print the list
     print('\nYouTub channel with no associated twitter account yet:')
