@@ -5,13 +5,25 @@ TournesolBot is based on the platform [Tournesol.app](https://tournesol.app).
 The repository gathers scripts to execute the main functions of the TournesolBot in different languages
 
 The main purpose of the TournesolBot is to:
-- Tweet daily a video recommandation from the top ranked video on Tournesol
+- Tweet daily a video recommendation from the top ranked video on Tournesol
 - Respond to tweet in which it is mentions and ask about the quality of a video
+
+## Installation
+
+Clone this directory somewhere on your computer.
+
+Go into the directory and run the following command:
+
+```
+pip install -e .
+```
 
 
 ## Usage
 
 ```
+cd tournesolbot
+
 python tournesolbot.py [-h] [-l 'en'/'fr'] [-a] [-d] [-m] [-r] [-t 'My tweet']
 
 This is this help of the Tournesol-Twitter-Bot.
