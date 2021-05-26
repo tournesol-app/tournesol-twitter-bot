@@ -20,7 +20,7 @@ already_answered_filepath = {
 }
 
 
-# Text in different languages for the possible tweet
+# Text in different languages for the possible tweets
 
 daily_tweet_text = {
     "en":["Today, I recommend '","' by ",", rated on #Tournesol\U0001F33B "," times by "," contributors, favorite criteria:\n- ","\n- ","\nyoutu.be/"],
@@ -101,6 +101,8 @@ YT_2_TWITTER = {
     "Tibees":"@TobyHendy",
     "Wintergatan":"@wintergatan",
     "Neil Halloran":"@neilhalloran",
+    "Adam Ragusea":"@aragusea",
+    "PBS Space Time":"@PBSSpaceTime",
 
     "Earthling Ed":"'Earthling Ed'",
 
@@ -146,6 +148,10 @@ YT_2_TWITTER = {
     "DIMENSION DÉBAT":"@DIMENSION_YT",
     "Tzitzimitl - Esprit Critique":"@Tzitzimitl",
     "La Psy Qui Parle":"@LaPsyQuiParle",
+    "Un Créatif":"@un_creatif",
+    "Jamy - Epicurieux":"@gourmaud_jamy",
+    "Balade Mentale":"@BaladeMentale",
+    "Licarion Rock":"@LicarionRock",
 
     "Le Vortex":"'Le Vortex'",
     "Pour Info":"'Pour Info'",
