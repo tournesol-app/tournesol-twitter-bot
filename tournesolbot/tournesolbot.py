@@ -16,20 +16,10 @@ LAST_N_DAYS = 120
 def get_top_percentage(criteria_row):
 # Get the top percentage categorie (Top 1,2,5,10,20,50%) from the quantile value (in the row)
 
-    if criteria_row['quantile_val'] < 0.01:
-        return "Top 1%"
-    elif criteria_row['quantile_val'] < 0.02:
-        return "Top 2%"
-    elif criteria_row['quantile_val'] < 0.05:
-        return "Top 5%"
-    elif criteria_row['quantile_val'] < 0.1:
-        return "Top 10%"
-    elif criteria_row['quantile_val'] < 0.2:
-        return "Top 20%"
-    elif criteria_row['quantile_val'] < 0.5:
-        return "Top 50%"
-    else:
+    if criteria_row['quantile_val'] >= 0.5:
         return "Not in Top 50%"
+
+    return "Top {val}%".format(val=round(criteria_row['quantile_val'] * 100))
 
 
 def get_top_criteria(video_dict):
