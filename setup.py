@@ -50,4 +50,9 @@ setuptools.setup(
         "Topic :: Scientific/Research",
         "Topic :: Scientific/Data",
     ],
+    entry_points={
+        "console_scripts": [
+            "tournesolbot = tournesolbot.__main__:main"
+        ]
+    }
 )

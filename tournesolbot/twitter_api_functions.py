@@ -1,7 +1,7 @@
 import sys
 import tweepy
 
-from data.utils_dict import already_shared_filepath, already_answered_filepath
+from tournesolbot.data.utils_dict import already_shared_filepath, already_answered_filepath
 
 
 def twitter_authentication(language='en'):

@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 
-from data.utils_dict import YT_2_TWITTER, already_shared_filepath
+from tournesolbot.data.utils_dict import YT_2_TWITTER, already_shared_filepath
 
 
 def remove_already_tweeted_videos_and_channels(df, language='en'):

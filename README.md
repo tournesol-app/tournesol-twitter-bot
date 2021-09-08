@@ -21,10 +21,8 @@ pip install -e .
 
 ## Usage
 
-```
-cd tournesolbot
-
-python tournesolbot.py [-h] [-l 'en'/'fr'] [-a] [-d] [-m] [-r] [-t 'My tweet']
+```sh
+$ tournesolbot [-h] [-l 'en'/'fr'] [-a] [-d] [-m] [-r] [-t 'My tweet']
 
 This is this help of the Tournesol-Twitter-Bot.
 
@@ -54,17 +52,17 @@ If you don't own the TournesolBot twitter account, you can use the following com
 Write the daily tweet with the french twitter account:
 
 ```sh
-python tournesolbot.py -l fr -a -d
+tournesolbot -l fr -a -d
 ```
 
 Respond to mention with the english twitter account:
 
 ```sh
-python tournesolbot.py -l en -a -r
+tournesolbot -l en -a -r
 ```
 
 Creating a list of missing YouTube channel  not associated yet with a twitter account:
 
 ```sh
-python tournesolbot.py -l en -m
+tournesolbot -l en -m
 ```
