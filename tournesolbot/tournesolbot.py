@@ -1,6 +1,5 @@
 import sys
 import requests
-import pandas as pd
 import getopt
 
 from tournesol_api_functions import get_good_video, get_video_info, get_missing_channel_list
@@ -8,78 +7,30 @@ from twitter_api_functions import twitter_authentication, write_tweet, write_res
 from data.utils_dict import ACCEPTED_LANGUAGE,YT_2_TWITTER, CRITERIA_DICT
 from data.utils_dict import already_answered_filepath, daily_tweet_text, video_details_tweet_text, not_found_video_tweet_text
 
-
 # Parameters
 FROM_TOP = 70
 LAST_N_DAYS = 120
-
-def get_top_percentage(criteria_row):
-# Get the top percentage categorie (Top 1,2,5,10,20,50%) from the quantile value (in the row)
-
-    if criteria_row['quantile_val'] < 0.01:
-        return "Top 1%"
-    elif criteria_row['quantile_val'] < 0.02:
-        return "Top 2%"
-    elif criteria_row['quantile_val'] < 0.05:
-        return "Top 5%"
-    elif criteria_row['quantile_val'] < 0.1:
-        return "Top 10%"
-    elif criteria_row['quantile_val'] < 0.2:
-        return "Top 20%"
-    elif criteria_row['quantile_val'] < 0.5:
-        return "Top 50%"
-    else:
-        return "Not in Top 50%"
-
-
-def get_top_criteria(video_dict):
-# Get the top creteria ranked by their quantile ranking
-# TODO: This function could probably be simplified
-
-    quantile_list=[]
-
-    for key, values in CRITERIA_DICT.items():
-        quantile_list.append(values[2])
-
-    for key,value in video_dict.items():
-        if key in quantile_list:
-            quantile = video_dict[key]
-            criteria = key.split('_quantile')[0]
-            CRITERIA_DICT[criteria].append(quantile)
-
-    df = pd.DataFrame.from_dict(CRITERIA_DICT,orient='index',columns=['en','fr', 'quantile', 'quantile_val'])
-    df = df.sort_values(by=['quantile_val'])
-    df.reset_index(drop=True, inplace=True)
-
-    df['top'] = df.apply(lambda row: get_top_percentage(row), axis=1)
-
-    return df
 
 
 def daily_tweet(api,language='en'):
 # Prepare and tweet the daily video recommandation
 
     # Get the video id for today's tweet
-    video_id = get_good_video(FROM_TOP,LAST_N_DAYS,language)
+    video_dict = get_good_video(FROM_TOP,LAST_N_DAYS,language)
 
-    video_dict = get_video_info(video_id)
-
+    video_id = video_dict['video_id']
     video_name = video_dict['name']
-    channel = video_dict['uploader']
-    n_contributors = video_dict['rating_n_experts']
+    uploader = video_dict['uploader']
+    n_contributors = video_dict['rating_n_contributors']
     n_ratings = video_dict['rating_n_ratings']
+    crit1 = video_dict['top_crit_1']
+    crit2 = video_dict['top_crit_2']
 
-    # Get the top criteria
-    df = get_top_criteria(video_dict)
-    crit1 = df.loc[0,[language]].item()
-    crit2 = df.loc[1,[language]].item()
-    crit3 = df.loc[2,[language]].item()
-
-    # Check if the channel is paired with a Twitter account, if not just use the name
-    if channel in YT_2_TWITTER:
-        twitter_accout = YT_2_TWITTER[channel]
+    # Check if the uploader is paired with a Twitter account, if not just use the name
+    if uploader in YT_2_TWITTER:
+        twitter_accout = YT_2_TWITTER[uploader]
     else:
-        twitter_accout = "'" + channel + "'"
+        twitter_accout = "'" + uploader + "'"
 
     # Check lenght and shorten the video title if the tweet is too long
     tweet_len_no_title = sum(len(i) for i in daily_tweet_text[language]) + \
@@ -96,16 +47,23 @@ def daily_tweet(api,language='en'):
         video_name = video_name[:car_to_del] + '...'
 
     # Crete the tweet
+    if language == 'en':
+        lang_idx = 0
+    elif language == 'fr':
+        lang_idx = 1
+    else:
+        pass
+    
     tweet = daily_tweet_text[language][0] + video_name + \
             daily_tweet_text[language][1] + twitter_accout + \
             daily_tweet_text[language][2] + str(n_ratings) + \
             daily_tweet_text[language][3] + str(n_contributors) + \
-            daily_tweet_text[language][4] + crit1 + \
-            daily_tweet_text[language][5] + crit2 + \
-            daily_tweet_text[language][6] + video_id
-
+            daily_tweet_text[language][4] + CRITERIA_DICT[crit1][lang_idx] + \
+            daily_tweet_text[language][5] + CRITERIA_DICT[crit2][lang_idx] + \
+            daily_tweet_text[language][6] + video_id 
+           
     # Tweet it
-    write_tweet(api,tweet,language,video_id)
+    write_tweet(api,tweet,language,video_id,uploader)
 
 
 def get_video_id_from_tweet(tweet_text):
@@ -194,19 +152,13 @@ def respond_to_mention(api,language='en'):
 
             # Get video main info
             video_name = video_dict['name']
-            channel = video_dict['uploader']
+            uploader = video_dict['uploader']
             n_contributors = video_dict['rating_n_experts']
             n_ratings = video_dict['rating_n_ratings']
 
             print('Video found in the tweet:')
             print('Title:', video_name)
-            print('Channel:', channel)
-
-            # Get the 3 top criteria and their Top x%
-            df = get_top_criteria(video_dict)
-            crit1 = df.loc[0,[language]].item() + f" ({df.loc[0,['top']].item()})"
-            crit2 = df.loc[1,[language]].item() + f" ({df.loc[1,['top']].item()})"
-            crit3 = df.loc[2,[language]].item() + f" ({df.loc[2,['top']].item()})"
+            print('Channel:', uploader)
 
             # Create the tweet
             tweet = video_details_tweet_text[language][0] + tweet_user + \
@@ -278,7 +230,7 @@ if __name__ == '__main__':
             daily_tweet(api,language)
 
         if opt == '-t':
-            write_tweet(api,arg,language,'')
+            write_tweet(api,arg,language)
 
         if opt == '-m':
             get_missing_channel_list(FROM_TOP,LAST_N_DAYS,language)

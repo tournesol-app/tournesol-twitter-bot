@@ -1,10 +1,9 @@
-import sys
 import tweepy
-
 from data.utils_dict import already_shared_filepath, already_answered_filepath
 
 
 def twitter_authentication(language='en'):
+    """ To authenticate to the Twitter API """
 
     print('Start Twitter autentification')
 
@@ -37,8 +36,8 @@ def twitter_authentication(language='en'):
         raise ValueError("Error during Twitter authentication")
 
 
-def write_tweet(api,tweet,language,video_id=''):
-# To write a tweet through the Twitter API
+def write_tweet(api, tweet, language,video_id='', uploader=''):
+    """ To write a tweet through the Twitter API"""
 
     print("\nThis is your tweet:\n")
     print(tweet)
@@ -56,7 +55,7 @@ def write_tweet(api,tweet,language,video_id=''):
             # Add to the list of tweeted videos
             if video_id:
                 with open(already_shared_filepath[language], 'a') as file:
-                    file.write(f'{video_id}\n')
+                    file.write(f'{video_id};{uploader}\n')
                 print('Added to the list of already shared videos.')
 
             print('Tweeted it!')
@@ -66,7 +65,7 @@ def write_tweet(api,tweet,language,video_id=''):
 
 
 def write_response_tweet(api,tweet,language,tweet_id=''):
-# To respond to a tweet through the Twitter API
+    """ To respond to a tweet through the Twitter API """
 
     print("\nThis is your tweet:\n")
     print(tweet)
