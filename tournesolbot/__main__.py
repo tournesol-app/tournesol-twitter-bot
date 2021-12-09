@@ -5,8 +5,8 @@ import getopt
 
 from tournesolbot.tournesol_api_functions import get_good_video, get_video_info, get_missing_channel_list
 from tournesolbot.twitter_api_functions import twitter_authentication, write_tweet, write_response_tweet
-from data.utils_dict import ACCEPTED_LANGUAGE,YT_2_TWITTER, CRITERIA_DICT
-from data.utils_dict import already_answered_filepath, daily_tweet_text, video_details_tweet_text, not_found_video_tweet_text
+from tournesolbot.data.utils_dict import ACCEPTED_LANGUAGE,YT_2_TWITTER, CRITERIA_DICT
+from tournesolbot.data.utils_dict import already_answered_filepath, daily_tweet_text, video_details_tweet_text, not_found_video_tweet_text
 
 
 # Parameters
@@ -16,7 +16,7 @@ LAST_N_DAYS = 120
 def get_top_percentage(criteria_row):
 # Get the top percentage categorie (Top 1,2,5,10,20,50%) from the quantile value (in the row)
 
-    if criteria_row['quantile_val'] >= 0.5:
+    if criteria_row['quantile_val'] > 0.5:
         return "Not in Top 50%"
 
     return "Top {val}%".format(val=round(criteria_row['quantile_val'] * 100))
