@@ -40,6 +40,7 @@ not_found_video_tweet_text = {
 
 # Dict of criteria with thier different traduction + _quantile name
 CRITERIA_DICT = OrderedDict([
+    ('largely_recommended', ["Should be largely recommended","Devrait être largement recommendé","largely_recommended_quantile"]),
     ('reliability', ["Reliable and not misleading","Fiable et non trompeur", "reliability_quantile"]),
     ('importance', ["Important and actionable","Important et incite à l'action", "importance_quantile"]),
     ('engaging', ["Engaging and thought-provoking","Stimulant et suscite la réflexion", "engaging_quantile"]),
@@ -109,7 +110,7 @@ YT_2_TWITTER = {
 
     # French channels
     "Science4All":"@le_science4all",
-    "Monsieur Phi":"",
+    "Monsieur Phi":"@MonsieurPhi",
     "Heu?reka":"@Heu7reka",
     "ScienceEtonnante":"@dlouapre",
     "Dans Ton Corps":"@jmnl",
