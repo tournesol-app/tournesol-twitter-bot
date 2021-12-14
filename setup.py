@@ -3,18 +3,18 @@ import os
 
 from __version__ import __version__
 
-NAME = 'tournesol-twitter-bot'
+NAME = "tournesol-twitter-bot"
 EXCLUDE_DIRS = []
 VERSION = __version__
-AUTHOR = 'Aidan Jungo'
-EMAIL = 'tournesol.app@gmail.com'
-DESCRIPTION = 'TournesolBot scripts'
-URL = 'https://github.com/tournesol-app/tournesol-twitter-bot'
-REQUIRES_PYTHON = '>=3.6.0'
-REQUIRED = ['pandas','tweepy']
-README = 'README.md'
-PACKAGE_DIR = '.'
-LICENSE = 'LICENSE'
+AUTHOR = "Aidan Jungo"
+EMAIL = "tournesol.app@gmail.com"
+DESCRIPTION = "TournesolBot scripts"
+URL = "https://github.com/tournesol-app/tournesol-twitter-bot"
+REQUIRES_PYTHON = ">=3.6.0"
+REQUIRED = ["pandas", "tweepy"]
+README = "README.md"
+PACKAGE_DIR = "."
+LICENSE = "LICENSE"
 
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -34,7 +34,7 @@ setuptools.setup(
     long_description=long_description,
     url=URL,
     include_package_data=True,
-    package_dir={'': PACKAGE_DIR},
+    package_dir={"": PACKAGE_DIR},
     license=license,
     packages=setuptools.find_packages(exclude=EXCLUDE_DIRS),
     python_requires=REQUIRES_PYTHON,
