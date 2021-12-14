@@ -62,11 +62,13 @@ video_details_tweet_text = {
 not_found_video_tweet_text = {
     "en": [
         "Sorry @",
-        ", this video has not been rated on #Tournesol\U0001F33B. Please consider to add it and rate it on https://tournesol.app",
+        ", this video has not been rated on #Tournesol\U0001F33B. "
+        "Please consider to add it and rate it on https://tournesol.app",
     ],
     "fr": [
         "Désolé @",
-        ", cette vidéo n'a jamais été notée sur #Tournesol\U0001F33B. Vous pouver l'ajouter et la noter sur https://tournesol.app",
+        ", cette vidéo n'a jamais été notée sur #Tournesol\U0001F33B. "
+        "Vous pouver l'ajouter et la noter sur https://tournesol.app",
     ],
 }
 

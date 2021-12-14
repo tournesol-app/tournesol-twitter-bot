@@ -27,13 +27,11 @@ def twitter_authentication(language="en"):
     # Create API object
     api = tweepy.API(auth)
 
-    try:
-        api.verify_credentials()
+    if api.verify_credentials():
         print("Twitter authentication OK")
         return api
-
-    except:
-        raise ValueError("Error during Twitter authentication")
+    else:
+        raise ConnectionError("Error during Twitter authentication")
 
 
 def write_tweet(api, tweet, language, video_id="", uploader=""):

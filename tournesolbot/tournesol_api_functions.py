@@ -33,7 +33,8 @@ def get_good_video(from_top, days_ago, language="en"):
     date_delta = datetime.now() - timedelta(days=days_ago)
     date_gte = date_delta.strftime("%d-%m-%y-%H-%M-%S")
     response = requests.get(
-        f"https://api.tournesol.app/video/?language={language}&date_gte={date_gte}&limit={from_top}"
+        f"https://api.tournesol.app/video/?"
+        f"language={language}&date_gte={date_gte}&limit={from_top}"
     ).json()
 
     df = pd.DataFrame.from_dict(response["results"])
@@ -115,16 +116,18 @@ def get_missing_channel_list(from_top, days_ago, language="en"):
     print(" Get channels with no Twitter account associated.")
 
     # Get top viedeo from Tournesol API
+    date_delta = datetime.now() - timedelta(days=days_ago)
+    date_gte = date_delta.strftime("%d-%m-%y-%H-%M-%S")
     response = requests.get(
-        f"https://tournesol.app/api/v2/videos/search_tournesol/?backfire_risk=100&better_habits=100&diversity_inclusion=100&engaging=100&entertaining_relaxing=100&importance=100&layman_friendly=100&pedagogy=100&reliability=100&days_ago_lte={days_ago}&language={language}&limit={from_top}"
+        f"https://api.tournesol.app/video/?"
+        f"language={language}&date_gte={date_gte}&limit={from_top}"
     ).json()
     df = pd.DataFrame.from_dict(response["results"], orient="columns")
 
     # Remove channel which are already in the dictionnary
     df = df[~df["uploader"].isin(YT_2_TWITTER.keys())]
 
-    df["n_experts"] = df["n_public_experts"] + df["n_private_experts"]
-    df = df[df["n_experts"] > 1]
+    df = df[df["rating_n_contributors"] > 1]
 
     # Print the list
     print("\nYouTub channel with no associated twitter account yet:")
