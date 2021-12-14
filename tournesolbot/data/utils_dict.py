@@ -1,8 +1,6 @@
 from collections import OrderedDict
 
-
 ACCEPTED_LANGUAGE = {"en": "english", "fr": "french"}
-
 
 # File path for the different languages
 
@@ -189,6 +187,11 @@ YT_2_TWITTER = {
     "Adam Ragusea": "@aragusea",
     "PBS Space Time": "@PBSSpaceTime",
     "Earthling Ed": "'Earthling Ed'",
+    "60 Minutes": "@60Minutes",
+    "Vsauce2": "@VsauceTwo",
+    "vlogbrothers": "@hankgreen",
+    "SciShow": "@SciShow",
+    "Joe Scott": "@answerswithjoe",
     # French channels
     "Science4All": "@le_science4all",
     "Monsieur Phi": "@MonsieurPhi",
@@ -214,7 +217,7 @@ YT_2_TWITTER = {
     "DirtyBiology": "@dirtybiology",
     "Philoxime": "@maxlambr",
     "Scilabus": "@Scilabus",
-    "Scilabus plus": "@Scilabus",
+    "Sci+": "@Scilabus",
     "Homo Fabulus": "@HomoFabulus",
     "AstronoGeek": "@AstronoGeek",
     "Aude WTFake": "@WTFake_",
@@ -234,6 +237,23 @@ YT_2_TWITTER = {
     "Jamy - Epicurieux": "@gourmaud_jamy",
     "Balade Mentale": "@BaladeMentale",
     "Licarion Rock": "@LicarionRock",
-    "Le Vortex": "'Le Vortex'",
     "Pour Info": "'Pour Info'",
+    "Scienticfiz": "None",
+    "Info ou Mytho ? ": "'Info ou Mytho ?'",
+    "28 minutes - ARTE": "@ARTEfr",
+    "CNRS": "@CNRS",
+    "ApresLaBiere": "@ApresLaBiere",
+    "aurelien barrau": "'Aurelien Barrau'",
+    "Radio-Canada Info": "@RadioCanadaInfo",
+    "52 minutes": "@RadioTeleSuisse",
+    "Le Point Genius": "@lePointGenius",
+    "Le Vortex - ARTE": "@ARTEfr",
+    "Defend Intelligence": "@defintelligence",
+    "Asclépios": "@Asclepios_YT",
+    "Libre Influence": "'Libre Influence'",
+    "Vox Pop - ARTE": "@ARTEfr",
+    "Micode": "@Micode",
+    "Ben Névert": "'Ben Névert'",
+    "BLAST, Le souffle de l'info": "@blast_france",
+    "Narada - MP2I": "'Narada - MP2I'",
 }
