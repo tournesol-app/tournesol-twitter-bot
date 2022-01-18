@@ -71,7 +71,7 @@ not_found_video_tweet_text = {
 }
 
 
-# Dict of criteria with thier different traduction + _quantile name
+# Dict of criteria with their different traduction + _quantile name
 CRITERIA_DICT = OrderedDict(
     [
         (
@@ -84,34 +84,34 @@ CRITERIA_DICT = OrderedDict(
         ),
         (
             "reliability",
-            ["Reliable and not misleading", "Fiable et non trompeur", "reliability_quantile"],
+            ["Reliable and not misleading", "Fiable & non trompeur", "reliability_quantile"],
         ),
         (
             "importance",
-            ["Important and actionable", "Important et incite à l'action", "importance_quantile"],
+            ["Important and actionable", "Important & actionnable", "importance_quantile"],
         ),
         (
             "engaging",
             [
                 "Engaging and thought-provoking",
-                "Stimulant et suscite la réflexion",
+                "Stimulant & suscite la réflexion",
                 "engaging_quantile",
             ],
         ),
-        ("pedagogy", ["Clear and pedagogical", "Clair et pédagogique", "pedagogy_quantile"]),
+        ("pedagogy", ["Clear and pedagogical", "Clair & pédagogique", "pedagogy_quantile"]),
         (
             "layman_friendly",
             ["Layman-friendly", "Accessible aux non-spécialistes", "layman_friendly_quantile"],
         ),
         (
             "diversity_inclusion",
-            ["Diversity and Inclusion", "Diversité et inclusion", "diversity_inclusion_quantile"],
+            ["Diversity and Inclusion", "Diversité & inclusion", "diversity_inclusion_quantile"],
         ),
         (
             "backfire_risk",
             [
                 "Resilience to backfiring risks",
-                "Résilient au retour de flamme",
+                "Résistant aux retours négatifs",
                 "backfire_risk_quantile",
             ],
         ),
@@ -127,7 +127,7 @@ CRITERIA_DICT = OrderedDict(
             "entertaining_relaxing",
             [
                 "Entertaining and relaxing",
-                "Divertissant et relaxant",
+                "Divertissant & relaxant",
                 "entertaining_relaxing_quantile",
             ],
         ),
@@ -248,6 +248,7 @@ YT_2_TWITTER = {
     "52 minutes": "@RadioTeleSuisse",
     "Le Point Genius": "@lePointGenius",
     "Le Vortex - ARTE": "@ARTEfr",
+    "Le Vortex - ARTE ": "@ARTEfr",
     "Defend Intelligence": "@defintelligence",
     "Asclépios": "@Asclepios_YT",
     "Libre Influence": "'Libre Influence'",
