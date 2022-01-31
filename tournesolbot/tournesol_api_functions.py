@@ -6,7 +6,7 @@ from data.utils_dict import YT_2_TWITTER, CRITERIA_DICT, already_shared_filepath
 
 
 def remove_already_tweeted_videos_and_channels(df, language="en"):
-    """Remove from the top df aready tweeted video and channel tweeted in the last n days"""
+    """Remove from the top df already tweeted video and channel tweeted in the last n days"""
 
     # Get already tweeted video
     with open(already_shared_filepath[language], "r") as file:

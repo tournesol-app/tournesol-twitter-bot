@@ -31,16 +31,32 @@ def daily_tweet(api, language="en"):
     crit1 = video_dict["top_crit_1"]
     crit2 = video_dict["top_crit_2"]
 
+    # Set language
+    if language == "en":
+        lang_idx = 0
+    elif language == "fr":
+        lang_idx = 1
+    else:
+        pass
+
     # Check if the uploader is paired with a Twitter account, if not just use the name
     if uploader in YT_2_TWITTER:
         twitter_accout = YT_2_TWITTER[uploader]
     else:
         twitter_accout = "'" + uploader + "'"
 
-    # Check lenght and shorten the video title if the tweet is too long
-    tweet_len_no_title = sum(len(i) for i in daily_tweet_text[language]) + sum(
+    # Check length and shorten the video title if the tweet is too long
+    tweet_len_no_title = sum(len(i) for i in daily_tweet_text[language])
+    tweet_len_no_title += sum(
         len(i)
-        for i in [twitter_accout, str(n_ratings), str(n_contributors), crit1, crit2, video_id]
+        for i in [
+            twitter_accout,
+            str(n_ratings),
+            str(n_contributors),
+            CRITERIA_DICT[crit1][lang_idx],
+            CRITERIA_DICT[crit2][lang_idx],
+            video_id,
+        ]
     )
 
     # 272 because :
@@ -53,12 +69,6 @@ def daily_tweet(api, language="en"):
         video_name = video_name[:car_to_del] + "..."
 
     # Crete the tweet
-    if language == "en":
-        lang_idx = 0
-    elif language == "fr":
-        lang_idx = 1
-    else:
-        pass
 
     tweet = (
         daily_tweet_text[language][0]

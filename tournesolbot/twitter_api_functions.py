@@ -5,9 +5,9 @@ from data.utils_dict import already_shared_filepath, already_answered_filepath
 def twitter_authentication(language="en"):
     """To authenticate to the Twitter API"""
 
-    print("Start Twitter autentification")
+    print("Start Twitter authentication")
 
-    # Import from here to avoid error if used withou autentification file
+    # Import from here to avoid error if used without authentication file
     from data.authentication import twitter_account_en, twitter_account_fr
 
     # Get corresponding twitter account authentication dictionnary
@@ -42,8 +42,8 @@ def write_tweet(api, tweet, language, video_id="", uploader=""):
     print("\n")
 
     if api:
-        # TODO: remove when completly autonomus
-        tweet_it = input("\nDo you realy want to tweet that?")
+        # TODO: remove when completely autonomous
+        tweet_it = input("\nDo you really want to tweet that?")
 
         if tweet_it == "yes":
 
@@ -70,8 +70,8 @@ def write_response_tweet(api, tweet, language, tweet_id=""):
     print("\n")
 
     if api:
-        # TODO: remove when completly autonomus
-        tweet_it = input("\nDo you realy want to tweet that?")
+        # TODO: remove when completely autonomous
+        tweet_it = input("\nDo you really want to tweet that?")
 
         if tweet_it == "yes":
 
