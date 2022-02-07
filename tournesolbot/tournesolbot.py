@@ -13,8 +13,8 @@ from data.utils_dict import (
 )
 
 # Parameters
-FROM_TOP = 70
-LAST_N_DAYS = 120
+FROM_TOP = 100
+LAST_N_DAYS = 180
 
 
 def daily_tweet(api, language="en"):

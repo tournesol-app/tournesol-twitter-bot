@@ -50,7 +50,17 @@ def get_good_video(from_top, days_ago, language="en"):
     df["tournesol_score"] = df[CRITERIA_DICT.keys()].sum(axis=1)
 
     # Keep videos rated by more than n contributors
-    n_contributor = 2
+    n_contributor = 4
+    n_ratings = 10
+
+    df = df[df["rating_n_contributors"] > n_contributor]
+    df = df[df["rating_n_ratings"] > n_ratings]
+
+    df = remove_already_tweeted_videos_and_channels(df, language)
+
+    # Remove video with a reliability lower than average
+    df = df[df["reliability"] > 0.0]
+    print("\nList of remaining videos :")
     print(
         df[
             [
@@ -58,19 +68,11 @@ def get_good_video(from_top, days_ago, language="en"):
                 "name",
                 "uploader",
                 "tournesol_score",
-                "rating_n_contributors",
                 "reliability",
+                "rating_n_contributors",
             ]
         ]
     )
-    df = df[df["rating_n_contributors"] > n_contributor]
-
-    df = remove_already_tweeted_videos_and_channels(df, language)
-
-    # Remove video with a reliability lower than average
-    df = df[df["reliability"] > 0.0]
-    print("\nList of remaining videos :")
-    print(df[["video_id", "name", "uploader", "tournesol_score", "reliability"]])  # ,'n_experts'
 
     # Chose a video randomly (weighted by Tournesol score) in the remaining list
     df_rand = df.sample(weights=df["tournesol_score"])
