@@ -24,7 +24,7 @@ def daily_tweet(api, language="en"):
     video_dict = get_good_video(FROM_TOP, LAST_N_DAYS, language)
 
     video_id = video_dict["video_id"]
-    video_name = video_dict["name"]
+    video_name = video_dict["name"].replace("@", "at")
     uploader = video_dict["uploader"]
     n_contributors = video_dict["rating_n_contributors"]
     n_ratings = video_dict["rating_n_ratings"]
