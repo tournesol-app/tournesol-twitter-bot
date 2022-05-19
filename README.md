@@ -1,5 +1,6 @@
-# Tournesol Twitter Bot
+⚠️ **The Tournesol Twitter Bot is now integrated into the backend of the main repository of [Tournesol](https://github.com/tournesol-app/tournesol/tree/main/backend/twitterbot)** ⚠️ 
 
+# Tournesol Twitter Bot
 TournesolBot is based on the platform [Tournesol.app](https://tournesol.app).
 
 The repository gathers scripts to execute the main functions of the TournesolBot in different languages
